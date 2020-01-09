@@ -1,0 +1,15 @@
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+
+[user]
+        name = yu-hsieh
+        email = Yu-cheng.Hsieh@amd.com
+[core]
+        editor = vim
+        excludesFile = /home/htony/.gitignore
+
