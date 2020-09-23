@@ -83,9 +83,9 @@
 # than is set as the default login shell.
 # If begins with a '-' character, the shell will be started as a login shell.
 # shell                 zsh
-# shell                 bash
+shell                 bash
 # shell                 ksh
-  shell -$SHELL
+# shell -$SHELL
 
 # shellaka '> |tcsh'
 # shelltitle '$ |bash'
