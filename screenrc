@@ -346,13 +346,15 @@ defnonblock on
 
 # Uncomment one/some following lines to automatically let
 # SCREEN start some programs in the given window numbers:
-# screen -t MAIL        0 mutt
-# screen -t EDIT        1 vim
-# screen -t GOOGLE      2 links http://www.google.com
-# screen -t NEWS        3 slrn
-# screen -t WWW         4 links http://www.math.fu-berlin.de/~guckes/
-# screen 5
-# screen 6
+screen 0
+screen 1
+screen 2
+screen 3
+screen 4
+screen 5
+screen 6
+
+select 0
 
 # Set the environment variable var to value string. If only var is specified,
 # you'll be prompted to enter a value. If no parameters are specified,
