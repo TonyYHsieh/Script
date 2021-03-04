@@ -1,0 +1,6 @@
+LibraryLogic:
+    ScheduleName: "navi21"
+    DeviceNames: ["Device 73a2"]
+    ArchitectureName: "gfx1030"
+
+LibraryClient:

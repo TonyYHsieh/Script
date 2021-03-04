@@ -1,0 +1,35 @@
+GlobalParameters:
+  MinimumRequiredVersion: 4.9.0
+  PrintLevel: 1
+  ForceRedoBenchmarkProblems: True
+  ForceRedoLibraryLogic: True
+  ForceRedoLibraryClient: True
+  CMakeBuildType: Release
+  NumBenchmarks: 1
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  LibraryPrintDebug: False
+  NumElementsToValidate: 0
+  ValidationMaxToPrint: 4
+  ValidationPrintValids: False
+  ShortNames: False
+  MergeFiles: True
+  KernelTime: True
+  SleepPercent: 500
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+#  PrintCodeCommands: True
+  PrintSolutionRejectionReason: True
+  PrintWinnersOnly: True
+#  PinClocks: True
+
+BenchmarkProblems:
+  -
+    - # ProblemType
+      OperationType: GEMM
+      DataType: s
+      TransposeA: False
+      TransposeB: False
+      UseBeta: True
+      Batched: True
+
