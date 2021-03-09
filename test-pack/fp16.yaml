@@ -1,0 +1,126 @@
+GlobalParameters:
+  MinimumRequiredVersion: 4.9.0
+  PrintLevel: 1
+  ForceRedoBenchmarkProblems: True
+  ForceRedoLibraryLogic: True
+  ForceRedoLibraryClient: True
+  CMakeBuildType: Release
+  NumBenchmarks: 1
+  EnqueuesPerSync: 30
+  SyncsPerBenchmark: 1
+  LibraryPrintDebug: False
+  NumElementsToValidate: 0
+  ValidationMaxToPrint: 4
+  ValidationPrintValids: False
+  ShortNames: False
+  MergeFiles: True
+  KernelTime: True
+  SleepPercent: 500
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+#  PrintCodeCommands: True
+  PrintSolutionRejectionReason: True
+  PrintWinnersOnly: True
+#  PinClocks: True
+BenchmarkProblems:
+
+  ########################################
+  # NT
+  ########################################
+  -
+    - # ProblemType
+      OperationType: GEMM
+      DataType: h
+      # DestDataType: B
+      # ComputeDataType: s
+#      HighPrecisionAccumulate: True
+      TransposeA: True
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - # BenchmarkProblemSizeGroup - Standard
+      InitialSolutionParameters:
+      BenchmarkCommonParameters:
+      ForkParameters:
+#        - TransposeLDS: [1]
+        - AssertFree0ElementMultiple: [8]
+        - AssertFree1ElementMultiple: [8]
+        - WavefrontSize: [32] # , 64]
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+        - LoopTail: [True]
+        - PrefetchLocalRead: [True]
+        - PrefetchGlobalRead: [True]
+#        - WaveSeparateGlobalReadA: [1]
+#        - WaveSeparateGlobalReadB: [1]
+        - ThreadTile:
+#          - [  4,  4 ]
+#          - [  4,  8 ]
+#          - [  8,  4 ]
+          - [  8,  8 ]
+          - [  8, 16 ]
+          - [ 16,  8 ]
+          - [ 16, 16 ]
+        - WorkGroup:
+#          - [  8, 8,  1 ]
+          - [  8, 16,  1 ]
+          - [ 16,  8,  1 ]
+          - [ 16, 16,  1 ]
+#          - [ 16, 32,  1 ]
+#          - [ 32, 16,  1 ]
+#          - [ 32, 32,  1 ]
+        - DepthU: [8, 16, 32]
+        - VectorWidth: [8]
+        - GlobalReadVectorWidth: [8]
+        - LdsPadA: [0]
+        - LdsPadB: [0]
+#        - OptNoLoadLoop: [0]
+        - StaggerUMapping: [0,3]
+        - StaggerUStride: [128,256]
+        - StaggerU: [0,32]
+        - WorkGroupMapping: [1,2,4,8,16]
+        - ExpandPointerSwap: [False, True]
+      BenchmarkForkParameters:
+      JoinParameters:
+      BenchmarkJoinParameters:
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+#          - Exact: [  32,   16, 1, 32768]
+          - Exact: [  768, 1024, 1, 1024]
+#          - Exact: [ 1536, 1536, 1, 2048]
+          - Exact: [ 1536, 2048, 1, 2048]
+#          - Exact: [ 2048, 2048, 1, 2048]
+          - Exact: [ 3072, 4096, 1, 4096]
+#          - Exact: [ 3072, 4096, 1, 4096, 4224, 4224, 4224, 4224]
+
+#          - Exact: [1024, 1024, 1, 1024]
+#          - Exact: [2048, 2048, 1, 2048]
+#          - Exact: [4096, 4096, 1, 4096]
+#          - Exact: [8192, 8192, 1, 8192]
+
+#          - Exact: [768, 512, 1, 512]
+#          - Exact: [768, 1024, 1, 1024]
+#          - Exact: [128, 128, 1, 32768]
+#          - Exact: [768, 512, 1, 32768]
+#          - Exact: [768, 1024, 1, 32768]
+#          - Exact: [512, 512, 1, 512]
+#          - Exact: [1152, 1024, 1, 32768, 1280, 1280, 1280, 1280]
+#          - Exact: [1280, 1024, 1, 32768, 1280, 1280, 1280, 1280]
+#          - Exact: [ 768, 1024, 1, 32768, 1056, 1056, 1056, 1056]
+#          - Exact: [1536, 1024, 1, 32768, 1056, 1056, 1056, 1056]
+#          - Exact: [3072, 4096, 1, 4096, 4128, 4128, 4128, 4128]
+#          - Exact: [ 896, 1024, 1, 32768, 1056, 1056, 1056, 1056]
+#          - Exact: [1024, 1024, 1, 1024, 1056, 1056, 1056, 1056]
+#          - Exact: [768, 1024, 1, 1024]
+#          - Exact: [1536, 1024, 1, 1024]
+#          - Exact: [1024, 1024, 1, 1024]
+
+#          - Exact: [768, 1024, 1, 1024]
+#          - Exact: [1024, 1024, 1, 1024, 1056, 1056, 1056, 1056]
+#          - Exact: [2048, 2048, 1, 2048, 2080, 2080, 2080, 2080]
+#          - Exact: [4096, 4096, 1, 4096, 4128, 4128, 4128, 4128]
+#          - Exact: [8192, 8192, 1, 8192, 8224, 8224, 8224, 8224]
+          
+#          - Range: [ [1024, 17, 1152], 0, [4], [1024] ]
+
