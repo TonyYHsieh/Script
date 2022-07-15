@@ -1,0 +1,6 @@
+GlobalParameters:
+  NumElementsToValidate: -1
+  KernelTime: True
+  MaxWorkspaceSize: 33554432
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
