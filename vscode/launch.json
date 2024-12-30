@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Tensile Exec",
-            "type": "python",
+            "name": "Tensilelite Codegen",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/Tensile/bin/Tensile",
             "cwd": "${workspaceFolder}/${input:outputPath}",
@@ -15,19 +15,30 @@
                 "."
             ],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "tensilelite client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/${input:outputPath}/0_Build/client/tensile_client",
+            "args": [
+                "--config-file",
+                "${workspaceFolder}/${input:outputPath}/1_BenchmarkProblems/Cijk_Alik_Bljk_F8SS_BH_UserArgs_00/00_Final/source/ClientParameters.ini"],
+            "cwd": "${fileDirname}",
+            "miDebuggerPath": "/opt/rocm/bin/rocgdb"
         }
     ],
     "inputs": [
         {
             "id": "configName",
             "type": "promptString",
-            "default": "test.yaml",
+            "default": "f8.yaml",
             "description": "Tensile config yaml"
         },
         {
             "id": "outputPath",
             "type": "promptString",
-            "default": "mix",
+            "default": "test",
             "description": "Output folder"
         }
     ]
